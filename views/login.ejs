@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-base-300 min-h-screen">
+  <%- include('partials/navbar') %>
+
+  <div class="container mx-auto px-4 py-16">
+    <!-- Hero Section -->
+    <div class="text-center mb-8">
+      <h1 class="text-5xl font-bold text-base-content mb-4">Log In</h1>
+      <p class="text-lg text-base-content/70">
+        Please provide your credentials below
+      </p>
+    </div>
+
+    <!-- Login Form -->
+    <div class="max-w-2xl mx-auto">
+      <form method="POST" action="/login" class="space-y-6">
+        
+        <!-- User Name -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-semibold text-base-content/70">User Name</span>
+          </label>
+          <input 
+            type="text" 
+            name="userName" 
+            value="<%= userName %>"
+            placeholder="User Name" 
+            class="input input-bordered bg-base-200 text-lg py-6" 
+            required 
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-semibold text-base-content/70">Password</span>
+          </label>
+          <input 
+            type="password" 
+            name="password" 
+            placeholder="Password" 
+            class="input input-bordered bg-base-200 text-lg py-6" 
+            required 
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-control">
+          <button type="submit" class="btn btn-success w-full text-lg py-4">Login</button>
+        </div>
+
+      </form>
+
+      <!-- Error Message -->
+      <% if(errorMessage) { %>
+        <div role="alert" class="alert alert-error mt-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span><%= errorMessage %></span>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Solutions</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="container mx-auto p-4">
+    <div class="hero min-h-[400px] bg-base-200 rounded-lg my-8">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold mb-4">Welcome to Climate Solutions</h1>
+          <p class="py-6 text-lg">Explore innovative projects and solutions for addressing climate change across various sectors.</p>
+          <a href="/solutions/projects" class="btn btn-primary btn-lg">Explore All Projects</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider text-2xl font-bold my-8">Featured Projects</div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+      <div class="card bg-base-100 shadow-xl">
+        <figure class="h-48 bg-gradient-to-r from-green-400 to-blue-500">
+          <div class="flex items-center justify-center h-full text-white text-4xl font-bold">
+            🌱
+          </div>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Abandoned Farmland Restoration</h2>
+          <p>Restoring degraded farmland can sequester carbon while providing economic benefits.</p>
+          <div class="card-actions justify-end mt-4">
+            <a href="/solutions/projects/1" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-xl">
+        <figure class="h-48 bg-gradient-to-r from-gray-400 to-gray-600">
+          <div class="flex items-center justify-center h-full text-white text-4xl font-bold">
+            🏗️
+          </div>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Alternative Cement</h2>
+          <p>Innovative cement alternatives that significantly reduce carbon emissions in construction.</p>
+          <div class="card-actions justify-end mt-4">
+            <a href="/solutions/projects/2" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-xl">
+        <figure class="h-48 bg-gradient-to-r from-blue-400 to-cyan-500">
+          <div class="flex items-center justify-center h-full text-white text-4xl font-bold">
+            ❄️
+          </div>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Alternative Refrigerants</h2>
+          <p>Replacing harmful refrigeants with climate-friendly alternatives in cooling systems.</p>
+          <div class="card-actions justify-end mt-4">
+            <a href="/solutions/projects/3" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

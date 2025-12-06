@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= project.title %> - Climate Solutions</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="container mx-auto p-4">
+    <!-- Hero Section -->
+    <div class="hero bg-base-200 rounded-lg my-8">
+      <div class="hero-content text-center">
+        <div class="max-w-2xl">
+          <h1 class="text-5xl font-bold"><%= project.title %></h1>
+          <p class="py-6">Below, you will find detailed information about the project: <%= project.title %></p>
+          <% if(session.user) { %>
+            <div class="mt-4">
+              <a href="/solutions/editProject/<%= project.id %>" class="btn btn-warning">Edit Project</a>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Details -->
+    <div class="card bg-base-100 shadow-xl my-8">
+      <figure>
+        <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="w-full max-h-96 object-cover">
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title text-3xl mb-4">About This Project</h2>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-2">Introduction</h3>
+          <p class="text-lg"><%= project.intro_short %></p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-2">Impact</h3>
+          <p class="text-lg"><%= project.impact %></p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-2">Sector</h3>
+          <a href="/solutions/projects?sector=<%= project.Sector.sector_name %>" class="btn btn-outline">
+            <%= project.Sector.sector_name %>
+          </a>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-2">Learn More</h3>
+          <a href="<%= project.original_source_url %>" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Visit Original Source
+          </a>
+        </div>
+
+        <!-- Random Quote Section -->
+        <div class="divider"></div>
+        <div id="quote-section" class="bg-base-200 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">Inspirational Quote</h3>
+          <div id="quote-content" class="italic">
+            <p class="loading loading-spinner loading-md">Loading quote...</p>
+          </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="card-actions justify-end mt-6">
+          <a href="#" onclick="history.back(); return false;" class="btn btn-ghost">
+            ← Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fetch a random quote from the API
+      fetch('https://dummyjson.com/quotes/random')
+        .then(response => response.json())
+        .then(data => {
+          const quoteContent = document.getElementById('quote-content');
+          quoteContent.innerHTML = `
+            <p class="text-lg mb-2">"${data.quote}"</p>
+            <p class="text-right font-semibold">— ${data.author}</p>
+          `;
+        })
+        .catch(error => {
+          const quoteContent = document.getElementById('quote-content');
+          quoteContent.innerHTML = '<p class="text-error">Unable to load quote at this time.</p>';
+          console.error('Error fetching quote:', error);
+        });
+    });
+  </script>
+</body>
+</html>

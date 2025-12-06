@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Climate Solutions</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-base-300">
+  <%- include('partials/navbar') %>
+
+  <div class="container mx-auto px-4 py-8">
+    <!-- Hero Section with Add Button -->
+    <div class="text-center mb-8">
+      <div class="flex justify-center items-center gap-4 mb-4">
+        <h1 class="text-5xl font-bold text-base-content">Projects</h1>
+        <% if(session.user) { %>
+          <a href="/solutions/addProject" class="btn btn-success">Add New Project</a>
+        <% } %>
+      </div>
+      <p class="text-lg text-base-content/70 mb-6">
+        Browse the current list of Projects in our database. Click the theme to filter by sectors such as:
+      </p>
+      <div class="flex flex-wrap gap-2 justify-center">
+        <a href="/solutions/projects?sector=Industry" class="btn btn-sm btn-success">Industry</a>
+        <a href="/solutions/projects?sector=Transportation" class="btn btn-sm btn-success">Transportation</a>
+        <a href="/solutions/projects?sector=Electricity" class="btn btn-sm btn-success">Electricity</a>
+      </div>
+    </div>
+
+    <!-- Projects List -->
+    <div class="space-y-4">
+      <% projects.forEach(project => { %>
+        <div class="bg-base-100 rounded-lg shadow-lg p-6 flex justify-between items-start">
+          <div class="flex-1">
+            <h2 class="text-2xl font-bold text-base-content mb-2"><%= project.title %></h2>
+            <div class="inline-block bg-success/20 text-success px-3 py-1 rounded-full text-sm mb-3">
+              <%= project.Sector.sector_name %>
+            </div>
+            <p class="text-base-content/70"><%= project.summary_short %></p>
+          </div>
+          <div class="ml-6">
+            <a href="/solutions/projects/<%= project.id %>" class="btn btn-sm btn-primary">details</a>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>
